@@ -15,8 +15,11 @@ const app = express();
 //register view engine
 app.set('view engine', 'ejs');
 
+//configure port
+const PORT = process.env.PORT || 5050;
+
 //listen for requests
-app.listen(3000);
+app.listen(PORT, () => {console.log(`Server is running on port ${PORT}`)});
 
 //static
 app.use(express.static('public'));

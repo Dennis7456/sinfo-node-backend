@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "A node backend that consumes data from JSONPlaceholder",
   "main": "app.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css"
+    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
