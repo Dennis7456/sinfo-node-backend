@@ -4,6 +4,7 @@ const postRoutes = require('./routes/postRoutes');
 const commentRoutes = require('./routes/commentRouter');
 const albumRoutes = require('./routes/albumRouter');
 const photoRoutes = require('./routes/photoRouter');
+const notFoundRoute = require('./routes/404Router');
 
 const morgan = require('morgan');
 const { comment } = require('postcss');
@@ -43,3 +44,7 @@ app.use(albumRoutes);
 
 //photo routes
 app.use(photoRoutes);
+
+//404 route
+app.use(notFoundRoute);
+

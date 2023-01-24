@@ -61,16 +61,15 @@ const photo_create_get = (req, res) => {
 
 //create new photo
 const photo_create_photo = async function (req, res) {
-    let photo_id = req.params.photo_id;
-    let resource = 'posts/'
-    const uri = BASE_URL + resource + photo_id + '/comments';
+    let resource = 'photos/'
+    const uri = BASE_URL + resource;
     const options = {
         method: 'POST',
         body: JSON.stringify({
-            postId: post_id,
-            name: 'foo',
-            email: 'test@test.com',
-            body: 'bar',
+            albumId: 1,
+            title: 'foo',
+            url: 'bar',
+            thumbnailUrl: 'test.png',
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
@@ -92,20 +91,20 @@ const photo_create_photo = async function (req, res) {
     }
 }
 
-//update a comment
-const comment_update_comment = async function (req, res) {
+//update a photo
+const photo_update_photo = async function (req, res) {
 
-    let comment_id = req.params.comment_id;
-    let resource = 'posts/'
-    const uri = BASE_URL + resource + comment_id;
+    let photo_id = req.params.photo_id;
+    let resource = 'photos/'
+    const uri = BASE_URL + resource + photo_id;
 
     const options = {
         method: 'PUT',
         body: JSON.stringify({
-            id: comment_id,
-            name: 'foo',
-            email: 'test@test.com',
-            body: 'bar',
+            albumId: 1,
+            title: 'foo',
+            url: 'test@test.net',
+            thumbnailUrl: 'test.png'
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
@@ -127,21 +126,22 @@ const comment_update_comment = async function (req, res) {
     }
 }
 
-//patch a comment
-const comment_patch_comment = async function (req, res) {
+//patch a photo
+const photo_patch_photo = async function (req, res) {
   
-    let comment_id = req.params.comment_id;
-    let resource = 'comments/'
-    const uri = BASE_URL + resource + comment_id;
+    let photo_id = req.params.photo_id;
+    let resource = 'photos/'
+    const uri = BASE_URL + resource + photo_id;
 
     
     const options = {
         method: 'PATCH',
         body: JSON.stringify({
-            id: comment_id,
-            name: 'foo',
-            email: 'test@test.net',
-            body: 'bar'
+            id: photo_id,
+            albumId:2,
+            title: 'foo',
+            url: 'bar',
+            thumbnailUrl: 'testchanged.png'
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
@@ -163,12 +163,12 @@ const comment_patch_comment = async function (req, res) {
     }
 }
 
-//delete comment
-const comment_delete_comment = async function (req, res) {
+//delete a photo
+const photo_delete_photo = async function (req, res) {
 
-    let comment_id = req.params.comment_id;
-    let resource = 'comments/'
-    const uri = BASE_URL + resource + comment_id;
+    let photo_id = req.params.photo_id;
+    let resource = 'photos/'
+    const uri = BASE_URL + resource + photo_id;
 
     const options = {
         method: 'DELETE',
@@ -189,11 +189,11 @@ const comment_delete_comment = async function (req, res) {
     }
 }
 
-//filter comments
-const comment_filter_comment = async function (req, res) {
-    let post_id = req.params.post_id;
-    let resource = 'comments/?postId=';
-    const uri = BASE_URL + resource + post_id;
+//filter photo
+const photo_filter_photo = async function (req, res) {
+    let album_id = req.params.album_id;
+    let resource = 'photos/?albumId=';
+    const uri = BASE_URL + resource + album_id;
     const options = {
         method: 'GET'
     }
@@ -216,6 +216,11 @@ const comment_filter_comment = async function (req, res) {
 module.exports = {
     photo_index,
     photo_details,
-    photo_create_get
+    photo_create_get,
+    photo_create_photo,
+    photo_update_photo,
+    photo_patch_photo,
+    photo_delete_photo,
+    photo_filter_photo
     
 }
