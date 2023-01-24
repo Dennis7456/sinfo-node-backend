@@ -3,20 +3,23 @@ const express = require('express');
 const fetch = (...args) => import('node-fetch')
 .then(({default: fetch}) => fetch(...args));
 
+const BASE_URL = 'https://jsonplaceholder.typicode.com/';
+
 //get all posts
 const post_index = async function (req, res) {
-    const url = 'https://jsonplaceholder.typicode.com/posts';
+    let resource = 'posts/'
+    const uri = BASE_URL + resource;
     const options = {
         method: 'GET'
     }
 
-    fetch(url, options)
+    fetch(uri, options)
     .then(res => res.json())
     .then(json => console.log(json))
     .catch(err => console.error('error: ' + err));
 
     try {
-        let response = await fetch(url, options);
+        let response = await fetch(uri, options);
         response = await response.json();
         res.status(200).json(response);
     } catch (err){
@@ -29,18 +32,20 @@ const post_index = async function (req, res) {
 //get single post
 const post_details = async function (req, res) {
     let id = req.params.id;
-    const url = 'https://jsonplaceholder.typicode.com/posts/' + id;
+    let resource = 'posts/'
+    const uri = BASE_URL + resource + id;
+    console.log(uri);
     const options = {
         method: 'GET'
     }
 
-    fetch(url, options)
+    fetch(uri, options)
     .then(res => res.json())
     .then(json => console.log(json))
     .catch(err => console.error('error: ' + err));
 
     try {
-        let response = await fetch(url, options);
+        let response = await fetch(uri, options);
         response = await response.json();
         res.status(200).json(response);
     } catch (err){
@@ -57,7 +62,8 @@ const post_create_get = (req, res) => {
 //create new post
 const post_create_post = async function (req, res) {
 
-    const url = 'https://jsonplaceholder.typicode.com/posts';
+    let resource = 'posts/'
+    const uri = BASE_URL + resource;
     const options = {
         method: 'POST',
         body: JSON.stringify({
@@ -70,13 +76,13 @@ const post_create_post = async function (req, res) {
         }
     }
 
-    fetch(url, options)
+    fetch(uri, options)
     .then(res => res.json())
     .then(json => console.log(json))
     .catch(err => console.error('error: ' + err));
 
     try {
-        let response = await fetch(url, options);
+        let response = await fetch(uri, options);
         response = await response.json();
         res.status(200).json(response);
     } catch (err){
@@ -87,8 +93,11 @@ const post_create_post = async function (req, res) {
 
 //update a post
 const post_update_post = async function (req, res) {
+
     let id = req.params.id;
-    const url = 'https://jsonplaceholder.typicode.com/posts/' + id;
+    let resource = 'posts/'
+    const uri = BASE_URL + resource + id;
+
     const options = {
         method: 'PUT',
         body: JSON.stringify({
@@ -102,13 +111,13 @@ const post_update_post = async function (req, res) {
         }
     }
 
-    fetch(url, options)
+    fetch(uri, options)
     .then(res => res.json())
     .then(json => console.log(json))
     .catch(err => console.error('error: ' + err));
 
     try {
-        let response = await fetch(url, options);
+        let response = await fetch(uri, options);
         response = await response.json();
         res.status(200).json(response);
     } catch (err){
@@ -119,8 +128,12 @@ const post_update_post = async function (req, res) {
 
 //patch a post
 const post_patch_post = async function (req, res) {
+  
     let id = req.params.id;
-    const url = 'https://jsonplaceholder.typicode.com/posts/' + id;
+    let resource = 'posts/'
+    const uri = BASE_URL + resource + id;
+
+    
     const options = {
         method: 'PATCH',
         body: JSON.stringify({
@@ -131,13 +144,13 @@ const post_patch_post = async function (req, res) {
         }
     }
 
-    fetch(url, options)
+    fetch(uri, options)
     .then(res => res.json())
     .then(json => console.log(json))
     .catch(err => console.error('error: ' + err));
 
     try {
-        let response = await fetch(url, options);
+        let response = await fetch(uri, options);
         response = await response.json();
         res.status(200).json(response);
     } catch (err){
@@ -147,19 +160,22 @@ const post_patch_post = async function (req, res) {
 }
 
 const post_delete_post = async function (req, res) {
+
     let id = req.params.id;
-    const url = 'https://jsonplaceholder.typicode.com/posts/' + id;
+    let resource = 'posts/'
+    const uri = BASE_URL + resource + id;
+
     const options = {
         method: 'DELETE',
     }
 
-    fetch(url, options)
+    fetch(uri, options)
     .then(res => res.json())
     .then(json => console.log(json))
     .catch(err => console.error('error: ' + err));
 
     try {
-        let response = await fetch(url, options);
+        let response = await fetch(uri, options);
         response = await response.json();
         res.status(200).json(response);
     } catch (err){
@@ -170,19 +186,20 @@ const post_delete_post = async function (req, res) {
 
 //filter posts
 post_filter_post = async function (req, res) {
-    let user_id = req.params.id;
-    const url = 'https://jsonplaceholder.typicode.com/posts?userId=' + user_id;
+    let id = req.params.id;
+    let resource = 'posts/?userId=';
+    const uri = BASE_URL + resource + id;
     const options = {
         method: 'GET'
     }
 
-    fetch(url, options)
+    fetch(uri, options)
     .then(res => res.json())
     .then(json => console.log(json))
     .catch(err => console.error('error: ' + err));
 
     try {
-        let response = await fetch(url, options);
+        let response = await fetch(uri, options);
         response = await response.json();
         res.status(200).json(response);
     } catch (err){
@@ -194,19 +211,21 @@ post_filter_post = async function (req, res) {
 
 //List nested post comments
 const post_list_nested = async function (req, res) {
+
     let id = req.params.id;
-    const url = 'https://jsonplaceholder.typicode.com/posts/' + id + '/comments';
+    let resource = 'posts/'
+    const uri = BASE_URL + resource + id + '/comments';
     const options = {
         method: 'GET'
     }
 
-    fetch(url, options)
+    fetch(uri, options)
     .then(res => res.json())
     .then(json => console.log(json))
     .catch(err => console.error('error: ' + err));
 
     try {
-        let response = await fetch(url, options);
+        let response = await fetch(uri, options);
         response = await response.json();
         res.status(200).json(response);
     } catch (err){

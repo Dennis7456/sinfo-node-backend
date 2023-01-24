@@ -1,6 +1,10 @@
 const express = require('express');
-const postRoutes = require('./routes/postRoutes');
 const userRoutes = require('./routes/userRoutes');
+const postRoutes = require('./routes/postRoutes');
+const commentRoutes = require('./routes/commentRouter');
+const albumRoutes = require('./routes/albumRouter');
+const photoRoutes = require('./routes/photoRouter');
+
 const morgan = require('morgan');
 const { comment } = require('postcss');
 
@@ -31,3 +35,11 @@ app.use(userRoutes);
 //post routes
 app.use(postRoutes);
 
+//comment routes
+app.use(commentRoutes);
+
+//album routes
+app.use(albumRoutes);
+
+//photo routes
+app.use(photoRoutes);
