@@ -1,4 +1,5 @@
 const express = require('express');
+let fs = require('fs');
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 const commentRoutes = require('./routes/commentRouter');
@@ -18,6 +19,9 @@ app.set('view engine', 'ejs');
 //configure port
 const PORT = process.env.PORT || 5050;
 
+//path for views
+let path = './views/';
+
 //listen for requests
 app.listen(PORT, () => {console.log(`Server is running on port ${PORT}`)});
 
@@ -29,7 +33,20 @@ app.use(morgan('dev'));
 
 //respond
 app.get('/', (req, res) => {
-    res.render('index', {title: 'Home Page'});
+    // res.render('index', {title: 'Home Page'});
+    // console.log(path);
+    fs.readFile(path + 'index.html', function (error, data) {
+        if (error) {
+            res.writeHead(404);
+            res.write('Whoops! File not found!');
+        } else {
+            res.writeHead(200, {
+                'Content-Type': 'text/html'
+            });
+            res.write(data);
+        }
+        res.end();
+    });
 });
 
 
@@ -49,5 +66,5 @@ app.use(albumRoutes);
 app.use(photoRoutes);
 
 //404 route
-app.use(notFoundRoute);
+// app.use(notFoundRoute);
 
