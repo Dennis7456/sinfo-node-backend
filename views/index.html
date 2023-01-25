@@ -3,28 +3,133 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/styles/styles.css"> -->
-    <!-- <title><%= title %></title> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style type="text/css">
+        .heading {
+            font-size: 32px;
+            text-align: center;
+            color: gray;
+            padding: 10px;
+            font-family: 'Roboto', sans-serif;
+            border: 2px grey solid;
+            border-radius: 5px;
+        }
+        .border {
+            border: 2px gray solid;
+            border-radius: 5px;
+        }
+        p {
+            font-size: 15px;
+            color: dimgray;
+            margin: 10px;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+        }
+        .paragraph {
+            color: grey;
+        }
+
+        .heading-2 {
+            text-align: justify;
+            margin-left: 10px;
+            padding-left: 10px;
+            padding-top: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            color: grey;
+        }
+
+        .flex-box {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-direction;
+            flex-wrap: wrap;
+        }
+        h3 {
+            font-size: 25px;
+            font-family: 'Roboto', sans-serif;
+            color: darkgrey;
+            text-decoration: underline;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .item {
+            margin: 10px;
+            padding: 4px;
+            /* border-bottom: 2px gray solid; */
+            border-left: 2px gray solid;
+        }
+        a {
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+            color: blue;
+        }
+        ul {
+            font-size: 15px;
+            font-family: 'Roboto', sans-serif;
+            text-align: left;
+            color: gray;
+        }
+    </style>
+    <title>Sinfo Node Backend</title>
 </head>
 <body>
     <!-- content wrapper -->
-<h1 class="heading">sinfo-node-backend</h1>
-<p>This is a backend REST api that consumes data from <a href="https://jsonplaceholder.typicode.com/">JSONPlaceholder</a>.
+<h1 class="heading">sinfo-node-backend<p class="paragraph">A node js backend</p></h1>
+<p class="">This is a backend REST api that consumes data from <a href="https://jsonplaceholder.typicode.com/" target="_blank">JSONPlaceholder</a>.
 
-    This application is built with <a href="https://expressjs.com/">ExpressJS</a> and and <a href="https://nodejs.org/en/">NodeJS</a> and is available on <a href="https://sinfo-node-backend.vercel.app/">Node-Backend-Link</a>.
+    This application is built with <a href="https://expressjs.com/" target="_blank">ExpressJS</a> and and <a href="https://nodejs.org/en/" target="_blank">NodeJS</a> and is available on <a href="https://sinfo-node-backend-dennis7456.vercel.app/" target="_blank">Node-Backend-Link</a>.
 </p>
-<h2 class="heading-2">Links to fetch data</h2>
-<ol>
-    <li><h3>Users</h3>
-    <ul>
-        <li>Get all <a href="">users</a></li>
-        <li>Get a single user <a href="">users</a></li>
-    </ul>
-</li>
-    <li>Posts</li>
-    <li>Comments</li>
-    <li>Albums</li>
-    <li>Photos</li>
-</ol>
+<div class="border">
+<h2 class="heading-2">Links to fetch data:</h2>
 </body>
+<div class="flex-box">
+    <div class="item">
+        <h3 class="heading-3">Users</h3>
+        <ul>
+            <li>Get all <a href="https://sinfo-node-backend-dennis7456.vercel.app/users" target="_blank">users</a></li>
+            <li>Get a single <a href="https://sinfo-node-backend-dennis7456.vercel.app/users/5" target="_blank">user</a></li>
+        </ul>
+    </div>
+    <div class="item" id="left-p">
+        <h3>Posts</h3>
+        <ul>
+            <li>Get all <a href="https://sinfo-node-backend-dennis7456.vercel.app/posts" target="_blank">posts</a></li>
+            <li>Get a single <a href="https://sinfo-node-backend-dennis7456.vercel.app/posts/50" target="_blank">post</a></li>
+            <li>Delete a single post e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/delete_posts/7" target="_blank">post 7</a></li>
+            <li>Get a single user's posts e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/user_posts/7" target="_blank">user 7</a></li>
+            <li>Get comments related to a post e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/post_comments/7" target="_blank">post 7</a></li>
+        </ul>
+    </div>
+    <div class="item" id="left-p">
+        <h3>Comments</h3>
+        <ul>
+            <li>Get all <a href="https://sinfo-node-backend-dennis7456.vercel.app/comments" target="_blank">comments</a></li>
+            <li>Get a single <a href="https://sinfo-node-backend-dennis7456.vercel.app/comments/9" target="_blank">comment</a></li>
+            <li>Delete a single comment e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/delete_comments/8" target="_blank">comment 8</a></li>
+            <li>Get a single post's comments e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/post_comments/8" target="_blank">post 8</a></li>
+        </ul>
+    </div>
+    <div class="item" id="left-p">
+        <h3>Albums</h3>
+        <ul>
+            <li>Get all <a href="https://sinfo-node-backend-dennis7456.vercel.app/albums" target="_blank">albums</a></li>
+            <li>Get a single album e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/albums/12" target="_blank">album 12</a></li>
+            <li>Delete an album e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/delete_albums/9" target="_blank">album 9</a></li>
+            <li>Get a user's albums e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/user_albums/9" target="_blank">user 9</a></li>
+            <li>Get an album's photos e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/album_photos/17" target="_blank">album 17</a></li>
+        </ul>
+    </div>
+    <div class="item" id="left-p">
+        <h3>Photos</h3>
+        <ul>
+            <li>Get all <a href="https://sinfo-node-backend-dennis7456.vercel.app/photos" target="_blank">photos</a></li>
+            <li>Get a single photo e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/photos/5" target="_blank">photo 5</a></li>
+            <li>Delete a single photo e.g <a href="https://sinfo-node-backend-dennis7456.vercel.app/delete_photos/19" target="_blank"> photo 19</a></li>
+        </ul></div>
+</div>
+</div>
 </html>

@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 const PORT = process.env.PORT || 5050;
 
 //path for views
-let path = './views/';
+let path = __dirname + "/views/index.html";
 
 //listen for requests
 app.listen(PORT, () => {console.log(`Server is running on port ${PORT}`)});
@@ -35,7 +35,8 @@ app.use(morgan('dev'));
 app.get('/', (req, res) => {
     // res.render('index', {title: 'Home Page'});
     // console.log(path);
-    fs.readFile(path + 'index.html', function (error, data) {
+    fs.readFile(path, function (error, data) {
+        console.log(path);
         if (error) {
             res.writeHead(404);
             res.write('Whoops! File not found!');
